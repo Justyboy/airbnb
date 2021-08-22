@@ -7,7 +7,7 @@ import {DateRangePicker} from 'react-date-range'
 import {useRouter} from "next/dist/client/router"
 
 
-function Header() {
+function Header({placeholder}) {
   const [searchInput, setSearchInput] =  useState("");
   const [startDate, setStartDate] = useState(new Date())
   const [endDate, setEndDate] = useState(new Date())
@@ -60,7 +60,8 @@ function Header() {
 
       {/* Middle */}
       <div className="flex items-center md:border-2 rounded-full py-2 md:shadow-lg">
-        <input value={searchInput} onChange={(e) => setSearchInput(e.target.value)} className="flex-grow pl-5 bg-transparent outline-none text-sm text-gray-600 placeholder-gray-400" type="text" placeholder="Start your search" />
+        <input value={searchInput} onChange={(e) => setSearchInput(e.target.value)} className="flex-grow pl-5 bg-transparent outline-none text-sm text-gray-600 placeholder-gray-400" 
+        type="text" placeholder={placeholder || "Start your search "} />
         <SearchIcon className="hidden  md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer md:mx-2" />
       </div>
 
@@ -87,7 +88,7 @@ function Header() {
    <h2 className="text-2xl flex-grow font-semibold">Number of Guests</h2>
    <UsersIcon className="h-5"/>
    <input value={noOfGuests} 
-   onChange={(e) => setNoOfGuest(e.target.value)}
+   onChange={(e) => setNoOfGuests(e.target.value)}
     type="number"
     min={1}
     className="w-12 pl-2 text-lg outline-none text-red-400"/>
